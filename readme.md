@@ -1,83 +1,29 @@
-# Boilerplate MVC em Node.js com PostgreSQL
+# Inteli-Activity-10
 
-Este projeto é um boilerplate básico para uma aplicação Node.js seguindo o padrão MVC (Model-View-Controller), utilizando PostgreSQL como banco de dados.
+**Explicação:** 
 
-## Requisitos
+**Explique com suas palavras o papel de cada camada da arquitetura MVC usada neste projeto.**
+Como o Model, o Controller e a View interagem entre si?
 
-- Node.js (versão X.X.X)
-- PostgreSQL (versão X.X.X)
+Resposta: O Model ele está responsável pela conexão com a estrutura de banco de dados, interagindo assim com o controller que está responsável por cordenar as informações através de uma api entre o Model e o View, justamente sendo essa interação que o Controller faz para que no View o frontend seja exibido para o cliente e as informações puxadas desde o Model passando pelo Controller sejam entregues.
 
-## Instalação
+**Como ocorre o envio e o recebimento de dados no formato JSON neste projeto?**
+Cite uma rota que responde em JSON e explique seu funcionamento.
 
-1. **Clonar o repositório:**
+Resposta: 
 
-```bash
-   git clone https://github.com/seu-usuario/seu-projeto.git
-   cd seu-projeto
-```
+Um exemplo de rota que responde em JSON seria:
 
-2. **Instalar as dependências:**
-    
-```bash
-npm install
-```
-    
-3. **Configurar o arquivo `.env`:**
-    
-Renomeie o arquivo `.env.example` para `.env` e configure as variáveis de ambiente necessárias, como as configurações do banco de dados PostgreSQL.
-    
+router.get('/api/exemplo', (req, res) => {
+  res.json({
+    mensagem: "Rota funcionando!",
+    status: "ok",
+  });
+});
 
-Configuração do Banco de Dados
-------------------------------
+seu funcionando é basicamente criar um endereço que neste caso é do tipo GET ou seja ele é feito para o usuário ler um dado, e responder com um dado tipo JSON que possuíra um objeto de mensagem e um objeto de status.
 
-1. **Criar banco de dados:**
-    
-    Crie um banco de dados PostgreSQL com o nome especificado no seu arquivo `.env`.
-    
-2. **Executar o script SQL de inicialização:**
-    
-```bash
-npm run init-db
-```
-    
-Isso criará a tabela `users` no seu banco de dados PostgreSQL com UUID como chave primária e inserirá alguns registros de exemplo.
-    
+**Qual a importância de usar HTML básico com formulários e tabelas para organizar e manipular dados no navegador?**
+Por que esse tipo de estrutura ainda é útil em projetos back-end com Node.js?
 
-Funcionalidades
----------------
-
-* **Padrão MVC:** Estrutura organizada em Model, View e Controller.
-* **PostgreSQL:** Banco de dados relacional utilizado para persistência dos dados.
-* **UUID:** Utilização de UUID como chave primária na tabela `users`.
-* **Scripts com `nodemon`:** Utilização do `nodemon` para reiniciar automaticamente o servidor após alterações no código.
-* **Testes:** Inclui estrutura básica para testes automatizados.
-
-Scripts Disponíveis
--------------------
-
-* `npm start`: Inicia o servidor Node.js.
-* `npm run dev`: Inicia o servidor com `nodemon`, reiniciando automaticamente após alterações no código.
-* `npm run test`: Executa os testes automatizados.
-* `npm run test:coverage`: Executa os testes e gera um relatório de cobertura de código.
-
-Estrutura de Diretórios
------------------------
-
-* **`config/`**: Configurações do banco de dados e outras configurações do projeto.
-* **`controllers/`**: Controladores da aplicação (lógica de negócio).
-* **`models/`**: Modelos da aplicação (definições de dados e interações com o banco de dados).
-* **`routes/`**: Rotas da aplicação.
-* **`tests/`**: Testes automatizados.
-* **`views/`**: Views da aplicação (se aplicável).
-
-Contribuição
-------------
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir um issue ou enviar um pull request.
-
-Licença
--------
-
-Este projeto está licenciado sob a Licença MIT.
-
-Este README.md fornece uma visão geral clara do boilerplate, incluindo instruções de instalação, configuração do banco de dados, funcionalidades principais, scripts disponíveis, estrutura de diretórios, como contribuir e informações de licença. Certifique-se de personalizar as seções com detalhes específicos do seu projeto conforme necessário.
+Resposta: A importância vem do fato que com essa estrutura é possível criar qualquer tipo de requisição incluindo GET, POST, UPDATE, DELETE, sendo a forma mais simples de fazer com que o View consiga se conectar com a API que está no Controller e assim chegar no Model para ele requisitar os dados. Sendo este o motivo do porque é tão útil o HTML básico com formulários e tabelas para organizar e manipular dados no navegador.
